@@ -228,7 +228,6 @@ h1 a {
 #side_nav .flaticon-books2:before,
 #side_nav .flaticon-important:before {
 	font-size: 30px;
-	
 }
 #side_nav {
 	background: none;
@@ -263,6 +262,12 @@ h1 a {
 	background: #666;
 	color: #fff;
 }
+#side_nav div > ul > li.active,
+#side_nav div > ul > li:not(:first-child):hover,
+#side_nav div > ul > li:hover li {
+	border-top-color: #666;
+	border-bottom-color: #666;
+}
 #side_nav div > ul > li.active > a,
 #side_nav div > ul > li:hover > a,
 #side_nav div > ul > li:hover li a {
@@ -271,6 +276,16 @@ h1 a {
 #side_nav div > ul > li.active > a,
 #side_nav div > ul > li:hover a {
 	color: #fff;
+}
+
+/* Arrow */
+#side_nav div > ul > li.dropdown > a:after {
+	content: "\e000";  
+	font-family: Flaticon;
+	font-size: 16px;
+	line-height: 21px;
+	font-style: normal;
+	float: right;
 }
 
 /* Submenu */
