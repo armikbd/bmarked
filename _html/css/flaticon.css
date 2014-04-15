@@ -1,0 +1,56 @@
+@font-face {
+	font-family: "Flaticon";
+	src: url("../fonts/flaticon.eot");
+	src: url("../fonts/flaticon.eot#iefix") format("embedded-opentype"),
+	url("../fonts/flaticon.woff") format("woff"),
+	url("../fonts/flaticon.ttf") format("truetype"),
+	url("../fonts/flaticon.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+	font-family: Flaticon;
+	font-size: 20px;
+	font-style: normal;
+	/*margin-left: 20px;*/
+}
+.flaticon-arrow487:before {
+	content: "\e000";
+}
+.flaticon-books2:before {
+	content: "\e001";
+}
+.flaticon-career:before {
+	content: "\e002";
+}
+.flaticon-document93:before {
+	content: "\e003";
+}
+.flaticon-feather16:before {
+	content: "\e004";
+}
+.flaticon-gallery:before {
+	content: "\e005";
+}
+.flaticon-home63:before {
+	content: "\e006";
+}
+.flaticon-important:before {
+	content: "\e007";
+}
+.flaticon-job1:before {
+	content: "\e008";
+}
+.flaticon-teacher33:before {
+	content: "\e009";
+}
+.flaticon-telephone:before {
+	content: "\e00a";
+}
+.flaticon-university2:before {
+	content: "\e00b";
+}
+.flaticon-university7:before {
+	content: "\e00c";
+}
