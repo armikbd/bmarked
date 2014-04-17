@@ -10,3 +10,7 @@ The authors are: [Freepik](http://www.freepik.com), [Icomoon](http://www.icomoon
 1. Fixed width
 2. Simple layout
 3. IE8+ Support
+
+
+For RGBA background support in IE8 I used [this] 
+(http://lea.verou.me/2009/02/bulletproof-cross-browser-rgba-backgrounds/) solution.
