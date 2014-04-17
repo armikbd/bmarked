@@ -81,7 +81,6 @@ h1 a {
 	-moz-box-shadow: 0 0 3px 0 #afafaf;
 	-webkit-box-shadow: 0 0 3px 0 #afafaf;
 	box-shadow: 0 0 3px 0 #afafaf;
-	box-shadow: none\9; /* IE8- */
 }
 #wrapper {
 	width: 920px;
@@ -186,6 +185,7 @@ h1 a {
 .widget ul.nav-stacked > li:first-child {
 }
 .widget ul.nav-stacked li a:hover {
+	/* Should I use bg or not ? */
 	background: rgba(255, 255, 255, 0.5);
 	border: 1px solid #666;
 	
@@ -326,6 +326,63 @@ h1 a {
 }
 #main .links li span:hover {
 	text-decoration: underline;
+}
+
+
+
+.lt-ie9 {
+}
+/* Note for filter opacity
+/* According to this article http://css-tricks.com/rgba-browser-support/
+/* rgba(255, 255, 255, 0.5) is not equivalent to (startColorstr=#50FFFFFF,endColorstr=#50FFFFFF)
+/* first two digits ("50" above) isn't 50%. You have to use "hexadecimal"
+/* because, 00 is transparent and FF opaque.
+/* so, for rgba(255,255,255,0.2), opacity = 20%
+/* => (255*20)/100 = 51 (numeric value)
+/* => #33 (hexadecimal value)  */
+/*.lt-ie9 .inner-box {
+	background: none;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF)";
+	zoom:1;
+}
+.lt-ie9 .inner-box .widget ul.nav-stacked li a:hover {
+	/* filter not working for hover */
+	/*background: white;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#80FFFFFF,endColorstr=#80FFFFFF);
+}
+#side_nav {
+	filter: none;
+}
+#side_nav li {
+	background: none;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000,endColorstr=#33000000)";
+	zoom:1;
+}
+.lt-ie9 #side_nav div > ul > li.active > a,
+.lt-ie9 #side_nav div > ul > li:hover > a,
+.lt-ie9 #side_nav div > ul > li:hover li a {
+	background: transparent;
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC000000,endColorstr=#CC000000);
+	zoom: 1;
+}*/
+
+/* As -ms-filter for background opacity causes the background of list items
+/* and the dropdown submenu to become unstable I use following solution
+/* http://lea.verou.me/2009/02/bulletproof-cross-browser-rgba-backgrounds/ */
+
+.lt-ie9 .inner-box {
+	background: url(../ie8/rgba.php?r=255&g=255&b=255&a=20) repeat;
+}
+.lt-ie9 .inner-box .widget ul.nav-stacked li a:hover {
+	background: url(../ie8/rgba.php?r=255&g=255&b=255&a=50) repeat;
+}
+#side_nav li {
+	background: url(../ie8/rgba.php?r=255&g=255&b=255&a=20) repeat;
+}
+.lt-ie9 #side_nav div > ul > li.active > a,
+.lt-ie9 #side_nav div > ul > li:hover > a,
+.lt-ie9 #side_nav div > ul > li:hover li a {
+	background: url(../ie8/rgba.php?r=100&g=100&b=100&a=80) repeat;
 }
 
 
