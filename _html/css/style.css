@@ -345,15 +345,15 @@ h1 a {
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF)";
 	zoom:1;
 }
-.lt-ie9 .inner-box .widget ul.nav-stacked li a:hover {
+.lt-ie9 .widget ul.nav-stacked li a:hover {
 	/* filter not working for hover */
 	/*background: white;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#80FFFFFF,endColorstr=#80FFFFFF);
 }
-#side_nav {
+.lt-ie9 #side_nav {
 	filter: none;
 }
-#side_nav li {
+.lt-ie9 #side_nav li {
 	background: none;
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000,endColorstr=#33000000)";
 	zoom:1;
@@ -373,10 +373,10 @@ h1 a {
 .lt-ie9 .inner-box {
 	background: url(../ie8/rgba.php?r=255&g=255&b=255&a=20) repeat;
 }
-.lt-ie9 .inner-box .widget ul.nav-stacked li a:hover {
+.lt-ie9 .widget ul.nav-stacked li a:hover {
 	background: url(../ie8/rgba.php?r=255&g=255&b=255&a=50) repeat;
 }
-#side_nav li {
+.lt-ie9 #side_nav li {
 	background: url(../ie8/rgba.php?r=255&g=255&b=255&a=20) repeat;
 }
 .lt-ie9 #side_nav div > ul > li.active > a,
