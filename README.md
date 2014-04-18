@@ -10,6 +10,7 @@ The authors are: [Freepik](http://www.freepik.com), [Icomoon](http://www.icomoon
 1. Fixed width
 2. Simple layout
 3. IE8+ Support
+4. Includes less (css preprocessor) files. So you can customize the theme easily by setting your own variables.
 
 
 For RGBA background support in IE8 I used [this] 

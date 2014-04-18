@@ -33,19 +33,41 @@ Author URI: http://www.armikbd.com/
 	padding: 0;
 }
 
-@body_spacing: 10px; /* min spacing between screen edge and #wrapper (working in smaller screen) */
-@wrapper_width: 920px; /* centered page */
-@base_padding: 20px;
-@base_border_width: 1px;
-@main_width: 680px; /* main content/article */
-@aside_width: @wrapper_width - @main_width - @base_padding;
+/* variables: basic structure */
+@body_spacing:       10px; /* minimum spacing between screen edge and #wrapper (working in smaller screen) */
+@page_width:         962px; /* centered page */
+@wrapper_width:      @page_width - (@base_padding + @base_border_width) * 2;
+@base_padding:       20px;
+@base_border_width:  1px;
+@main_width:         680px; /* main content/article */
+@aside_width:        @wrapper_width - @main_width - @base_padding;
+
+/* variables: basic colors */
+@body_bgcolor:       #d0cdc6;
+@font_dark_color:    #333; /* Default font color */
+@font_light_color:   #fff; /* Font color on dark background */
+@light_bgcolor:      @font_light_color;
+@dark_bgcolor:       #666;
+@base_border_color:  #dfdfdf;
+
+/* variables: sidebar */
+@aside_pad:                15px; /* padding between outer box and inner content */
+@aside_header_vert_pad:    8px; /* vert = vertical = Top and bottom padding of heading */
+@widget_list_border_width: @base_border_width;
+@nav_list_border_width:    @base_border_width;
+@nav_active_font_color:    @font_dark_color;
+@nav_hover_font_color:     @font_light_color;
+@nav_active_bgcolor:       fade(@light_bgcolor, 20%); /* First-level nav item: Normal state */
+@nav_hover_bgcolor:        fade(@dark_bgcolor, 80%); /* First-level nav item: hover state,
+                                                        second level: normal state 
+                                                        second level hover: solid color */
 
 body {
 	min-width: @wrapper_width + (@base_padding *2) ;
-	background: #d0cdc6 url(../images/body-bg.png) center top repeat fixed;
+	background: @body_bgcolor url(../images/body-bg.png) center top repeat fixed;
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	font-size: 14px;
-	color: #333;
+	color: @font_dark_color;
 }
 .float-clear {
 	width: 100%;
@@ -66,12 +88,17 @@ a {
 /* Basic Typo
 /* * * * * * * * * * * * * * * * * * * * * */
 h1 {
-	border-bottom: 1px solid #666;
+	border-bottom: 1px solid @dark_bgcolor;
 	padding-bottom: 10px;
 	margin-top: 0;
 	margin-bottom: 20px;
 	letter-spacing: 5px;
 	font-size: 24px;
+	
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
 }
 h2 {
 	margin-bottom: 10px;
@@ -82,18 +109,14 @@ p, ul, ol {
 	margin: 15px 0;
 	line-height: 1.5;
 }
-h1 a {
-	text-decoration: none;
-	color: inherit;
-}
 
 
 /* 
 /* Basic Structure
 /* * * * * * * * * * * * * * * * * * * * * */
 .inner-box {
-	background: rgba(255, 255, 255, 0.2);
-	border: 1px solid #dfdfdf;
+	background: fade(@light_bgcolor, 20%);
+	border: @base_border_width solid @base_border_color;
 	-moz-box-shadow: 0 0 3px 0 #afafaf;
 	-webkit-box-shadow: 0 0 3px 0 #afafaf;
 	box-shadow: 0 0 3px 0 #afafaf;
@@ -126,7 +149,7 @@ h1 a {
 	line-height: 36px;
 }
 #content {
-	margin-top: 20px;
+	margin-top: @base_padding;
 	min-height: 400px;
 }
 #main {
@@ -136,7 +159,7 @@ h1 a {
 .article {
 	width: @main_width - (@base_padding + @base_border_width)*2;
 	padding: @base_padding;
-	margin-bottom: 20px;
+	margin-bottom: @base_padding;
 }
 #sidebar {
 	width: @aside_width;
@@ -144,71 +167,75 @@ h1 a {
 }
 #footer {
 	text-align: center;
-}
-#footer .lft-col {
-	width: @aside_width;
-	float: left;
-}
-#footer .rht-col {
-	width: @main_width - (@base_padding + @base_border_width)*2;
-	padding: @base_padding;
-	float: right;
-	.border-radius(0 0 5px 5px);
+	
+	.lft-col {
+		width: @aside_width;
+		float: left;
+	}
+	.rht-col {
+		width: @main_width - (@base_padding + @base_border_width)*2;
+		padding: @base_padding;
+		float: right;
+		.border_radius(0 0 5px 5px);
+	}
 }
 
 
 /* 
 /* Sidebar
 /* * * * * * * * * * * * * * * * * * * * * */
-@aside_pad: 15px;
-@aside_header_vert_pad: 8px; /* vert = vertical = Top and bottom padding of heading */
-@widget_list_border_width: 1px;
 .widget {
-	margin-bottom: 20px;
+	margin-bottom: @base_padding;
 	padding: @aside_pad;
-}
-.widget > h3 {
-	margin: -@aside_pad -@aside_pad @aside_pad -@aside_pad;
-	padding: @aside_header_vert_pad @aside_pad;
-	background: #666;
-	border-bottom: @base_border_width solid #dfdfdf;
-	color: #fff;
-}
-.widget > h3 a {
-	display: block;
-	margin: -@aside_header_vert_pad -@aside_pad;
-	padding: @aside_header_vert_pad @aside_pad;
-	color: inherit;
-}
-.widget > h3 a:hover {
-	background: gray;
+	
+	> h3 {
+		margin: -@aside_pad -@aside_pad @aside_pad -@aside_pad;
+		padding: @aside_header_vert_pad @aside_pad;
+		background: @dark_bgcolor;
+		border-bottom: @base_border_width solid @base_border_color;
+		color: @font_light_color;
+		
+		a {
+			display: block;
+			margin: -@aside_header_vert_pad -@aside_pad;
+			padding: @aside_header_vert_pad @aside_pad;
+			color: inherit;
+			
+			&:hover {
+				background: gray;
+			}
+		}
+	}
 }
 .widget ul.nav-stacked {
 	line-height: 1.2;
-}
-.widget ul.nav-stacked > li {
-}
-.widget ul.nav-stacked li a {
-	text-decoration: none;
-	display: block;
-	padding: 5px 10px 5px 15px;
-	border: @widget_list_border_width solid transparent;
-	border-bottom: @widget_list_border_width solid #666;
-}
-.widget ul.nav-stacked > li:first-child {
-}
-.widget ul.nav-stacked li a:hover {
-	/* Should I use bg or not ? */
-	background: rgba(255, 255, 255, 0.5);
-	border: @widget_list_border_width solid #666;
 	
-	/* Take full width */
-	margin: 0 -(@aside_pad + @base_border_width);
-	padding-left: (@aside_pad * 2) + @base_border_width;
+	> li {
+	}
 	
-	/* Merge top border with bottom border of top anchor */
-	margin-top: -@widget_list_border_width;
-	padding-top: 6px;
+	li a {
+		@lft_pad: 15px;
+		@top_pad: 5px;
+		text-decoration: none;
+		display: block;
+		padding: @top_pad 10px 5px @lft_pad;
+		border: @widget_list_border_width solid transparent;
+		border-bottom: @widget_list_border_width solid @dark_bgcolor;
+		
+		&:hover {
+			/* Should I use bg or not ? */
+			background: fade(@light_bgcolor, 50%);
+			border-color: @dark_bgcolor;
+			
+			/* Take full width */
+			margin: 0 -(@aside_pad + @base_border_width);
+			padding-left: @aside_pad + @lft_pad + @base_border_width;
+			
+			/* Merge top border with bottom border of top anchor */
+			margin-top: -@widget_list_border_width;
+			padding-top: @top_pad + @widget_list_border_width;
+		}
+	}
 }
 
 
@@ -216,45 +243,45 @@ h1 a {
 /* Sidebar Navigation
 /* * * * * * * * * * * * * * * * * * * * * */
 
-/* icons */
-#side_nav [class^="flaticon-"] {
-	display: inline-block;
-	width: 40px;
-	vertical-align: middle;
-	text-align: center;
-	line-height: 0;
-	height: 0;
-}
-#side_nav [class^="flaticon-"]:before {
-	font-size: 16px;
-}
-#side_nav .flaticon-home63:before,
-#side_nav .flaticon-university7:before,
-#side_nav .flaticon-feather16:before {
-	font-size: 20px;
-}
-#side_nav .flaticon-document93:before,
-#side_nav .flaticon-gallery:before,
-#side_nav .flaticon-telephone:before {
-	font-size: 22px;
-}
-#side_nav .flaticon-books2:before,
-#side_nav .flaticon-important:before {
-	font-size: 30px;
-}
-@nav_list_border_width: 1px;
 #side_nav {
 	background: none;
 	border: 0 none transparent;
 	text-transform: uppercase;
+
+	/* icons */
+	[class^="flaticon-"] {
+		display: inline-block;
+		width: 40px;
+		vertical-align: middle;
+		text-align: center;
+		line-height: 0;
+		height: 0;
+	}
+	[class^="flaticon-"]:before {
+		font-size: 16px;
+	}
+	.flaticon-home63:before,
+	.flaticon-university7:before,
+	.flaticon-feather16:before {
+		font-size: 20px;
+	}
+	.flaticon-document93:before,
+	.flaticon-gallery:before,
+	.flaticon-telephone:before {
+		font-size: 22px;
+	}
+	.flaticon-books2:before,
+	.flaticon-important:before {
+		font-size: 30px;
+	}
 }
 #side_nav div > ul {
 	margin: -@aside_pad 0;
 	font-weight: bold;
 }
 #side_nav li {
-	background: rgba(255, 255, 255, 0.2);
-	border: @nav_list_border_width solid #dfdfdf;
+	background: @nav_active_bgcolor;
+	border: @nav_list_border_width solid @base_border_color;
 	margin-top: 2px;
 }
 #side_nav li:first-child {
@@ -264,6 +291,7 @@ h1 a {
 	text-decoration: none;
 	display: block;
 	padding: 5px 10px 5px 15px;
+	color: @nav_active_font_color;
 }
 #side_nav div > ul > li {
 	margin-left: -@aside_pad;
@@ -273,23 +301,23 @@ h1 a {
 #side_nav div > ul > li:first-child > a {
 	padding-top: @aside_header_vert_pad;
 	padding-bottom: @aside_header_vert_pad;
-	background: #666;
-	color: #fff;
+	background: @dark_bgcolor;
+	color: @font_light_color;
 }
 #side_nav div > ul > li.active,
 #side_nav div > ul > li:not(:first-child):hover,
 #side_nav div > ul > li:hover li {
-	border-top-color: #666;
-	border-bottom-color: #666;
+	border-top-color: @dark_bgcolor;
+	border-bottom-color: @dark_bgcolor;
 }
 #side_nav div > ul > li.active > a,
 #side_nav div > ul > li:hover > a,
 #side_nav div > ul > li:hover li a {
-	background: rgba(100,100,100,0.8);
+	background: @nav_hover_bgcolor;
 }
 #side_nav div > ul > li.active > a,
 #side_nav div > ul > li:hover a {
-	color: #fff;
+	color: @nav_hover_font_color;
 }
 
 /* Arrow */
@@ -322,14 +350,15 @@ h1 a {
 	font-style: italic;
 }
 #side_nav div > ul > li ul a:hover {
-	background: #666;
+	@c:@nav_hover_bgcolor;
+	background: rgb(red(@c), green(@c), blue(@c));
 }
 
 #main .links {
 }
 #main .links li {
-	background: #fff;
-	background: rgba(255, 255, 255, 0.2);
+	background: @font_light_color;
+	background: fade(@light_bgcolor, 20%);
 	-moz-box-shadow: 0 0 3px 0 #afafaf;
 	-webkit-box-shadow: 0 0 3px 0 #afafaf;
 	box-shadow: 0 0 3px 0 #afafaf;
