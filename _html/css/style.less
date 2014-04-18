@@ -33,7 +33,7 @@ Author URI: http://www.armikbd.com/
 	padding: 0;
 }
 
-@body_spacing: 10px;  /* min spacing between screen edge and #wrapper (working in smaller screen) */
+@body_spacing: 10px; /* min spacing between screen edge and #wrapper (working in smaller screen) */
 @wrapper_width: 920px; /* centered page */
 @base_padding: 20px;
 @base_border_width: 1px;
@@ -150,7 +150,7 @@ h1 a {
 	float: left;
 }
 #footer .rht-col {
-	width: @main_width;
+	width: @main_width - (@base_padding + @base_border_width)*2;
 	padding: @base_padding;
 	float: right;
 	.border-radius(0 0 5px 5px);
@@ -188,7 +188,7 @@ h1 a {
 }
 .widget ul.nav-stacked > li {
 }
-.widget ul.nav-stacked li  a {
+.widget ul.nav-stacked li a {
 	text-decoration: none;
 	display: block;
 	padding: 5px 10px 5px 15px;
@@ -228,8 +228,8 @@ h1 a {
 #side_nav [class^="flaticon-"]:before {
 	font-size: 16px;
 }
-#side_nav  .flaticon-home63:before,
-#side_nav  .flaticon-university7:before,
+#side_nav .flaticon-home63:before,
+#side_nav .flaticon-university7:before,
 #side_nav .flaticon-feather16:before {
 	font-size: 20px;
 }
@@ -294,7 +294,7 @@ h1 a {
 
 /* Arrow */
 #side_nav div > ul > li.dropdown > a:after {
-	content: "\e000";  
+	content: "\e000";
 	font-family: Flaticon;
 	font-size: 16px;
 	line-height: 21px;
@@ -353,7 +353,7 @@ h1 a {
 /* because, 00 is transparent and FF opaque.
 /* so, for rgba(255,255,255,0.2), opacity = 20%
 /* => (255*20)/100 = 51 (numeric value)
-/* => #33 (hexadecimal value)  */
+/* => #33 (hexadecimal value) */
 /*.lt-ie9 .inner-box {
 	background: none;
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF)";
