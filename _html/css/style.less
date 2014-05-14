@@ -228,6 +228,7 @@ p, ul, ol {
 		height: @search_btn_height - 10px;
 		line-height:  @search_btn_height - 10px;
 		padding: 5px 15px;
+		float: left;
 		opacity: 0;
 		/*background: rgba(255,255,255,0.2);*/
 		background: fade(@light_bgcolor, 20%);
@@ -239,11 +240,18 @@ p, ul, ol {
 		margin-right: -@search_btn_width;
 		-webkit-transition: margin .8s, opacity .5s;
 		transition: margin .8s, opacity .5s;
+		
+		/* fix: IE10, IE11 shows outline after submitting form without
+		   giving a value in search field */
+		outline: 0 none transparent;
 	}
 	input[type="search"]:focus {
 		margin-right: 20px;
 		opacity: 1;
 		cursor: text;
+		
+		/* fix: Chrome shows outline on focus */
+		outline: 0 none transparent;
 	}
 	input[type="search"]:-moz-ui-invalid:not(output) {
 		box-shadow: none;
@@ -266,6 +274,10 @@ p, ul, ol {
 		color: @dark_bgcolor;
 		/*background: rgba(255,255,255,0.2);*/
 		background: fade(@light_bgcolor, 20%);
+	}
+	.btn:focus {
+		/* fix: Chrome shows outline on focus */
+		outline: 0 none transparent;
 	}
 }
 .notice-bar {
