@@ -1,0 +1,178 @@
+/* -----------------------------------------
+   Sidebar
+----------------------------------------- */
+
+#sidebar {
+	width: @aside_width;
+	float: left;
+}
+
+.widget {
+	margin-bottom: @base_padding;
+	padding: @aside_pad;
+	
+	> h3 {
+		margin: -@aside_pad -@aside_pad @aside_pad -@aside_pad;
+		padding: @aside_header_vert_pad @aside_pad;
+		background: @dark_bgcolor;
+		border-bottom: @base_border_width solid @base_border_color;
+		color: @font_light_color;
+		
+		a {
+			display: block;
+			margin: -@aside_header_vert_pad -@aside_pad;
+			padding: @aside_header_vert_pad @aside_pad;
+			color: inherit;
+			
+			&:hover {
+				background: gray;
+			}
+		}
+	}
+}
+.widget ul.nav-stacked {
+	line-height: 1.2;
+	
+	> li {
+	}
+	
+	li a {
+		@lft_pad: 15px;
+		@top_pad: 5px;
+		text-decoration: none;
+		display: block;
+		padding: @top_pad 10px 5px @lft_pad;
+		border: @widget_list_border_width solid transparent;
+		border-bottom: @widget_list_border_width solid @dark_bgcolor;
+		
+		&:hover {
+			/* Should I use bg or not ? */
+			background: fade(@light_bgcolor, 50%);
+			border-color: @dark_bgcolor;
+			
+			/* Take full width */
+			margin: 0 -(@aside_pad + @base_border_width);
+			padding-left: @aside_pad + @lft_pad + @base_border_width;
+			
+			/* Merge top border with bottom border of top anchor */
+			margin-top: -@widget_list_border_width;
+			padding-top: @top_pad + @widget_list_border_width;
+		}
+	}
+}
+
+
+/* 
+/* Sidebar Navigation
+/* * * * * * * * * * * * * * * * * * * * * */
+
+#side_nav {
+	background: none;
+	border: 0 none transparent;
+	text-transform: uppercase;
+
+	/* icons */
+	[class^="flaticon-"] {
+		display: inline-block;
+		width: 40px;
+		vertical-align: middle;
+		text-align: center;
+		line-height: 0;
+		height: 0;
+	}
+	[class^="flaticon-"]:before {
+		font-size: 16px;
+	}
+	.flaticon-home63:before,
+	.flaticon-university7:before,
+	.flaticon-feather16:before {
+		font-size: 20px;
+	}
+	.flaticon-document93:before,
+	.flaticon-gallery:before,
+	.flaticon-telephone:before,
+	.flaticon-important:before {
+		font-size: 22px;
+	}
+	.flaticon-books2:before {
+		font-size: 30px;
+	}
+}
+#side_nav div > ul {
+	margin: -@aside_pad 0;
+	font-weight: bold;
+}
+#side_nav li {
+	background: @nav_active_bgcolor;
+	border: @nav_list_border_width solid @base_border_color;
+	margin-top: 2px;
+}
+#side_nav li:first-child {
+	margin-top: 0;
+}
+#side_nav a {
+	text-decoration: none;
+	display: block;
+	padding: 5px 10px 5px 15px;
+	color: @nav_active_font_color;
+}
+#side_nav div > ul > li {
+	margin-left: -@aside_pad;
+	margin-right: -@aside_pad;
+	position: relative;
+}
+#side_nav div > ul > li:first-child > a {
+	padding-top: @aside_header_vert_pad;
+	padding-bottom: @aside_header_vert_pad;
+	background: @dark_bgcolor;
+	color: @font_light_color;
+}
+#side_nav div > ul > li.active,
+#side_nav div > ul > li:not(:first-child):hover,
+#side_nav div > ul > li:hover li {
+	border-top-color: @dark_bgcolor;
+	border-bottom-color: @dark_bgcolor;
+}
+#side_nav div > ul > li.active > a,
+#side_nav div > ul > li:hover > a,
+#side_nav div > ul > li:hover li a {
+	background: @nav_hover_bgcolor;
+}
+#side_nav div > ul > li.active > a,
+#side_nav div > ul > li:hover a {
+	color: @nav_hover_font_color;
+}
+
+/* Arrow */
+#side_nav div > ul > li.dropdown > a:after {
+	content: "\e000";
+	font-family: Flaticon;
+	font-size: 16px;
+	line-height: 21px;
+	font-style: normal;
+	float: right;
+}
+
+/* Submenu */
+#side_nav div > ul > li ul {
+	display: none;
+	margin: 0;
+	position: absolute;
+	left: 100%;
+	top: -@nav_list_border_width;
+	white-space: nowrap;
+}
+#side_nav div > ul > li:hover ul {
+	display: block;
+}
+#side_nav div > ul > li ul li {
+}
+#side_nav div > ul > li ul a {
+	padding-left: 25px;
+	padding-right: 25px;
+	font-style: italic;
+}
+#side_nav div > ul > li ul a:hover {
+	@c:@nav_hover_bgcolor;
+	background: rgb(red(@c), green(@c), blue(@c));
+}

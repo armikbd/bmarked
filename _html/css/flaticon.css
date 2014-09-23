@@ -27,30 +27,45 @@
 .flaticon-document93:before {
 	content: "\e003";
 }
-.flaticon-feather16:before {
+.flaticon-facebook55:before {
 	content: "\e004";
 }
-.flaticon-gallery:before {
+.flaticon-feather16:before {
 	content: "\e005";
 }
-.flaticon-home63:before {
+.flaticon-gallery:before {
 	content: "\e006";
 }
-.flaticon-important:before {
+.flaticon-google116:before {
 	content: "\e007";
 }
-.flaticon-job1:before {
+.flaticon-home63:before {
 	content: "\e008";
 }
-.flaticon-teacher33:before {
+.flaticon-important:before {
 	content: "\e009";
 }
-.flaticon-telephone:before {
+.flaticon-job1:before {
 	content: "\e00a";
 }
-.flaticon-university2:before {
+.flaticon-linkedin11:before {
 	content: "\e00b";
 }
-.flaticon-university7:before {
+.flaticon-social19:before {
 	content: "\e00c";
+}
+.flaticon-social40:before {
+	content: "\e00d";
+}
+.flaticon-teacher33:before {
+	content: "\e00e";
+}
+.flaticon-telephone:before {
+	content: "\e00f";
+}
+.flaticon-university2:before {
+	content: "\e010";
+}
+.flaticon-university7:before {
+	content: "\e011";
 }

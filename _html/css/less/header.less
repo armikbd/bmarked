@@ -1,0 +1,110 @@
+/* -----------------------------------------
+   Header
+----------------------------------------- */
+
+#header {
+	padding: @base_padding;
+	.border_radius(5px 5px 0 0);
+}
+#header {
+	h1 {
+		margin: 0;
+		padding: 0;
+		border: 0 none transparent;
+		text-transform: uppercase;
+		font-size: 28px;
+		line-height: 36px;
+	}
+	h2 {
+		margin: 0;
+		line-height: 36px;
+	}
+}
+#logo {
+	float: left;
+	white-space: nowrap;
+	
+	.img-cont {
+		float: left;
+		margin-right: 15px;
+	}
+}
+#header .rht-col {
+	float: right;
+}
+.search-form {
+	@search_btn_width: 130px;
+	@search_btn_height: 30px;
+
+	position: relative;
+	border: @base_border_width solid @dark_bgcolor;
+	float: right;
+	.border_radius(3px);
+	
+	input.search-input {
+		/* IE8 & IE9 */
+		width: @search_btn_width;
+		height: 20px;
+		line-height: 20px;
+		padding: 5px 15px;
+		background: transparent;
+		border: 0 none transparent;
+		margin-right: 0px;
+	}
+	input[type="search"] {
+		width: @search_btn_width - 30px;
+		height: @search_btn_height - 10px;
+		line-height:  @search_btn_height - 10px;
+		padding: 5px 15px;
+		float: left;
+		opacity: 0;
+		/*background: rgba(255,255,255,0.2);*/
+		background: fade(@light_bgcolor, 20%);
+		background: transparent;
+		border: 0 none transparent;
+		position: relative;
+		cursor: pointer;
+		
+		margin-right: -@search_btn_width;
+		-webkit-transition: margin .8s, opacity .5s;
+		transition: margin .8s, opacity .5s;
+		
+		/* fix: IE10, IE11 shows outline after submitting form without
+		   giving a value in search field */
+		outline: 0 none transparent;
+	}
+	input[type="search"]:focus {
+		margin-right: 20px;
+		opacity: 1;
+		cursor: text;
+		
+		/* fix: Chrome shows outline on focus */
+		outline: 0 none transparent;
+	}
+	input[type="search"]:-moz-ui-invalid:not(output) {
+		box-shadow: none;
+	}
+	.btn {
+		width: @search_btn_width;
+		height: @search_btn_height;
+		line-height: @search_btn_height;
+		padding: 0 15px;
+		background: @dark_bgcolor;
+		border: 0 none transparent;
+		border-left: @base_border_width solid @dark_bgcolor;
+		margin-left: -@base_border_width;
+		float: right;
+		font-weight: bold;
+		color: @font_light_color;
+	}
+	input[type="search"]:hover + .btn,
+	.btn:hover {
+		color: @dark_bgcolor;
+		/*background: rgba(255,255,255,0.2);*/
+		background: fade(@light_bgcolor, 20%);
+	}
+	.btn:focus {
+		/* fix: Chrome shows outline on focus */
+		outline: 0 none transparent;
+	}
+}

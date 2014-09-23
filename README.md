@@ -31,29 +31,44 @@ The authors are: [Freepik](http://www.freepik.com), [Icomoon](http://www.icomoon
 4. [Document of news]
 (http://www.flaticon.com/free-icon/document-of-news_35911)
 
-5. [Feather silhouette in diagonal position]
+5. [Facebook logo]
+(http://www.flaticon.com/free-icon/facebook-logo_59439)
+
+6. [Feather silhouette in diagonal position]
 (http://www.flaticon.com/free-icon/feather-silhouette-in-diagonal-position_45257)
 
-6. [Gallery hand drawn interface symbol of irregular squares outlines]
+7. [Gallery hand drawn interface symbol of irregular squares outlines]
 (http://www.flaticon.com/free-icon/gallery-hand-drawn-interface-symbol-of-irregular-squares-outlines_35789)
 
-7. [Home black silhouette]
+8. [Google plus logo]
+(http://www.flaticon.com/free-icon/google-plus-logo_59490)
+
+9. [Home black silhouette]
 (http://www.flaticon.com/free-icon/home-black-silhouette_23665)
 
-8. [Important person]
+10. [Important person]
 (http://www.flaticon.com/free-icon/important-person_3729)
 
-9. [Job open]
+11. [Job open]
 (http://www.flaticon.com/free-icon/job-open_14387)
 
-10. [Teacher and open class door]
+12. [Linkedin logo]
+(http://www.flaticon.com/free-icon/linkedin-logo_34227)
+
+13. [Social pinterest]
+(http://www.flaticon.com/free-icon/social-pinterest_9150)
+
+14. [Social twitter bird symbol]
+(http://www.flaticon.com/free-icon/social-twitter-bird-symbol_8800)
+
+15. [Teacher and open class door]
 (http://www.flaticon.com/free-icon/teacher-and-open-class-door_43836)
 
-11. [Phone handler]
-(http://www.flaticon.com/free-icon/phone-handler_55)
+16. [Telephone handler]
+(http://www.flaticon.com/free-icon/telephone-handler_144)
 
-12. [University]
+17. [University]
 (http://www.flaticon.com/free-icon/university_5109)
 
-13. [University building]
+18. [University building]
 (http://www.flaticon.com/free-icon/university-building_45801)

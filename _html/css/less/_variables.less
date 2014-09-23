@@ -1,0 +1,32 @@
+/* -----------------------------------------
+   Variables
+----------------------------------------- */
+
+/* variables: basic structure */
+@body_spacing:       10px; /* minimum spacing between screen edge and #wrapper (working in smaller screen) */
+@page_width:         962px; /* centered page */
+@wrapper_width:      @page_width - (@base_padding + @base_border_width) * 2;
+@base_padding:       20px;
+@base_border_width:  1px;
+@main_width:         680px; /* main content/article */
+@aside_width:        @wrapper_width - @main_width - @base_padding;
+
+/* variables: basic colors */
+@body_bgcolor:       #d0cdc6;
+@font_dark_color:    #333; /* Default font color */
+@font_light_color:   #fff; /* Font color on dark background */
+@light_bgcolor:      @font_light_color;
+@dark_bgcolor:       #666;
+@base_border_color:  #dfdfdf;
+
+/* variables: sidebar */
+@aside_pad:                15px; /* padding between outer box and inner content */
+@aside_header_vert_pad:    8px; /* vert = vertical = Top and bottom padding of heading */
+@widget_list_border_width: @base_border_width;
+@nav_list_border_width:    @base_border_width;
+@nav_active_font_color:    @font_dark_color;
+@nav_hover_font_color:     @font_light_color;
+@nav_active_bgcolor:       fade(@light_bgcolor, 20%); /* First-level nav item: Normal state */
+@nav_hover_bgcolor:        fade(@dark_bgcolor, 80%); /* First-level nav item: hover state,
+                                                        second level: normal state 
+                                                        second level hover: solid color */

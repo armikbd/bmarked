@@ -25,6 +25,9 @@ Author URI: http://www.armikbd.com/
 	border-radius: @radius;
 }
 
+/* Variables */
+@import "less/_variables.less";
+
 
 /* 
 /* Reset Styles
@@ -33,36 +36,6 @@ Author URI: http://www.armikbd.com/
 	margin: 0;
 	padding: 0;
 }
-
-/* variables: basic structure */
-@body_spacing:       10px; /* minimum spacing between screen edge and #wrapper (working in smaller screen) */
-@page_width:         962px; /* centered page */
-@wrapper_width:      @page_width - (@base_padding + @base_border_width) * 2;
-@base_padding:       20px;
-@base_border_width:  1px;
-@main_width:         680px; /* main content/article */
-@aside_width:        @wrapper_width - @main_width - @base_padding;
-
-/* variables: basic colors */
-@body_bgcolor:       #d0cdc6;
-@font_dark_color:    #333; /* Default font color */
-@font_light_color:   #fff; /* Font color on dark background */
-@light_bgcolor:      @font_light_color;
-@dark_bgcolor:       #666;
-@base_border_color:  #dfdfdf;
-
-/* variables: sidebar */
-@aside_pad:                15px; /* padding between outer box and inner content */
-@aside_header_vert_pad:    8px; /* vert = vertical = Top and bottom padding of heading */
-@widget_list_border_width: @base_border_width;
-@nav_list_border_width:    @base_border_width;
-@nav_active_font_color:    @font_dark_color;
-@nav_hover_font_color:     @font_light_color;
-@nav_active_bgcolor:       fade(@light_bgcolor, 20%); /* First-level nav item: Normal state */
-@nav_hover_bgcolor:        fade(@dark_bgcolor, 80%); /* First-level nav item: hover state,
-                                                        second level: normal state 
-                                                        second level hover: solid color */
-
 body {
 	min-width: @wrapper_width + (@base_padding *2) ;
 	background: @body_bgcolor url(../images/body-bg.png) center top repeat fixed;
@@ -74,6 +47,9 @@ body {
 	width: 100%;
 	float: left;
 	clear: both;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 ul {
 	list-style: none;
@@ -82,6 +58,10 @@ ul {
 a {
 	color: #333;
 	text-decoration: underline;
+	
+	&:hover {
+		text-decoration: none;
+	}
 }
 
 
@@ -115,13 +95,6 @@ p, ul, ol {
 /* 
 /* Basic Structure
 /* * * * * * * * * * * * * * * * * * * * * */
-.inner-box {
-	background: fade(@light_bgcolor, 20%);
-	border: @base_border_width solid @base_border_color;
-	-moz-box-shadow: 0 0 3px 0 #afafaf;
-	-webkit-box-shadow: 0 0 3px 0 #afafaf;
-	box-shadow: 0 0 3px 0 #afafaf;
-}
 #wrapper {
 	width: @wrapper_width;
 	margin: 20px auto;
@@ -129,11 +102,6 @@ p, ul, ol {
 	background: url(../images/wrapper_bg.jpg);
 	border: @base_border_width solid #AFADAD;
 	.border_radius();
-}
-#header {
-	width: @wrapper_width - (@base_padding + @base_border_width)*2;
-	padding: @base_padding;
-	.border_radius(5px 5px 0 0);
 }
 #content {
 	margin-top: @base_padding;
@@ -148,340 +116,18 @@ p, ul, ol {
 	padding: @base_padding;
 	margin-bottom: @base_padding;
 }
-#sidebar {
-	width: @aside_width;
-	float: left;
-}
-#footer {
-	text-align: center;
-	
-	.lft-col {
-		width: @aside_width;
-		float: left;
-	}
-	.rht-col {
-		width: @main_width - (@base_padding + @base_border_width)*2;
-		padding: @base_padding;
-		float: right;
-		.border_radius(0 0 5px 5px);
-	}
-}
 
-/* 
-/* Header
-/* * * * * * * * * * * * * * * * * * * * * */
-#header {
-	h1 {
-		margin: 0;
-		padding: 0;
-		border: 0 none transparent;
-		text-transform: uppercase;
-		font-size: 28px;
-		line-height: 36px;
-	}
-	h2 {
-		margin: 0;
-		line-height: 36px;
-	}
-}
-#logo {
-	float: left;
-	white-space: nowrap;
-	
-	.img-cont {
-		float: left;
-		margin-right: 15px;
-	}
-}
-#header .rht-col {
-	float: right;
-}
-.quick-links {
-	text-align: right;
-	margin-top: 0;
-	
-	li {
-		display: inline;
-	}
-}
-.search-form {
-	@search_btn_width: 130px;
-	@search_btn_height: 30px;
+/* Common styles */
+@import "less/common.less";
 
-	position: relative;
-	border: @base_border_width solid @dark_bgcolor;
-	float: right;
-	.border_radius(3px);
-	
-	input.search-input {
-		/* IE8 & IE9 */
-		width: @search_btn_width;
-		height: 20px;
-		line-height: 20px;
-		padding: 5px 15px;
-		background: transparent;
-		border: 0 none transparent;
-		margin-right: 0px;
-	}
-	input[type="search"] {
-		width: @search_btn_width - 30px;
-		height: @search_btn_height - 10px;
-		line-height:  @search_btn_height - 10px;
-		padding: 5px 15px;
-		float: left;
-		opacity: 0;
-		/*background: rgba(255,255,255,0.2);*/
-		background: fade(@light_bgcolor, 20%);
-		background: transparent;
-		border: 0 none transparent;
-		position: relative;
-		cursor: pointer;
-		
-		margin-right: -@search_btn_width;
-		-webkit-transition: margin .8s, opacity .5s;
-		transition: margin .8s, opacity .5s;
-		
-		/* fix: IE10, IE11 shows outline after submitting form without
-		   giving a value in search field */
-		outline: 0 none transparent;
-	}
-	input[type="search"]:focus {
-		margin-right: 20px;
-		opacity: 1;
-		cursor: text;
-		
-		/* fix: Chrome shows outline on focus */
-		outline: 0 none transparent;
-	}
-	input[type="search"]:-moz-ui-invalid:not(output) {
-		box-shadow: none;
-	}
-	.btn {
-		width: @search_btn_width;
-		height: @search_btn_height;
-		line-height: @search_btn_height;
-		padding: 0 15px;
-		background: @dark_bgcolor;
-		border: 0 none transparent;
-		border-left: @base_border_width solid @dark_bgcolor;
-		margin-left: -@base_border_width;
-		float: right;
-		font-weight: bold;
-		color: @font_light_color;
-	}
-	input[type="search"]:hover + .btn,
-	.btn:hover {
-		color: @dark_bgcolor;
-		/*background: rgba(255,255,255,0.2);*/
-		background: fade(@light_bgcolor, 20%);
-	}
-	.btn:focus {
-		/* fix: Chrome shows outline on focus */
-		outline: 0 none transparent;
-	}
-}
-.notice-bar {
-	padding: 10px 20px;
-	border: @base_border_width solid @base_border_color;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	background: @dark_bgcolor;
-	color: @font_light_color;
-	
-	h3, ul {
-		float: left;
-		margin: 0;
-	}
-	ul li {
-		float: left;
-		margin: 0 0 0 20px;
-		border-left: @base_border_width solid @base_border_color;
-		padding-left: 20px;
-	}
-	a {
-		text-decoration: none;
-		font-weight: bold;
-		color: @base_border_color;
-		
-		&:hover {
-			color: @font_light_color;
-		}
-	}
-}
+/* Header */
+@import "less/header.less";
 
+/* Sidebar */
+@import "less/sidebar.less";
 
-/* 
-/* Sidebar
-/* * * * * * * * * * * * * * * * * * * * * */
-.widget {
-	margin-bottom: @base_padding;
-	padding: @aside_pad;
-	
-	> h3 {
-		margin: -@aside_pad -@aside_pad @aside_pad -@aside_pad;
-		padding: @aside_header_vert_pad @aside_pad;
-		background: @dark_bgcolor;
-		border-bottom: @base_border_width solid @base_border_color;
-		color: @font_light_color;
-		
-		a {
-			display: block;
-			margin: -@aside_header_vert_pad -@aside_pad;
-			padding: @aside_header_vert_pad @aside_pad;
-			color: inherit;
-			
-			&:hover {
-				background: gray;
-			}
-		}
-	}
-}
-.widget ul.nav-stacked {
-	line-height: 1.2;
-	
-	> li {
-	}
-	
-	li a {
-		@lft_pad: 15px;
-		@top_pad: 5px;
-		text-decoration: none;
-		display: block;
-		padding: @top_pad 10px 5px @lft_pad;
-		border: @widget_list_border_width solid transparent;
-		border-bottom: @widget_list_border_width solid @dark_bgcolor;
-		
-		&:hover {
-			/* Should I use bg or not ? */
-			background: fade(@light_bgcolor, 50%);
-			border-color: @dark_bgcolor;
-			
-			/* Take full width */
-			margin: 0 -(@aside_pad + @base_border_width);
-			padding-left: @aside_pad + @lft_pad + @base_border_width;
-			
-			/* Merge top border with bottom border of top anchor */
-			margin-top: -@widget_list_border_width;
-			padding-top: @top_pad + @widget_list_border_width;
-		}
-	}
-}
-
-
-/* 
-/* Sidebar Navigation
-/* * * * * * * * * * * * * * * * * * * * * */
-
-#side_nav {
-	background: none;
-	border: 0 none transparent;
-	text-transform: uppercase;
-
-	/* icons */
-	[class^="flaticon-"] {
-		display: inline-block;
-		width: 40px;
-		vertical-align: middle;
-		text-align: center;
-		line-height: 0;
-		height: 0;
-	}
-	[class^="flaticon-"]:before {
-		font-size: 16px;
-	}
-	.flaticon-home63:before,
-	.flaticon-university7:before,
-	.flaticon-feather16:before {
-		font-size: 20px;
-	}
-	.flaticon-document93:before,
-	.flaticon-gallery:before,
-	.flaticon-telephone:before {
-		font-size: 22px;
-	}
-	.flaticon-books2:before,
-	.flaticon-important:before {
-		font-size: 30px;
-	}
-}
-#side_nav div > ul {
-	margin: -@aside_pad 0;
-	font-weight: bold;
-}
-#side_nav li {
-	background: @nav_active_bgcolor;
-	border: @nav_list_border_width solid @base_border_color;
-	margin-top: 2px;
-}
-#side_nav li:first-child {
-	margin-top: 0;
-}
-#side_nav a {
-	text-decoration: none;
-	display: block;
-	padding: 5px 10px 5px 15px;
-	color: @nav_active_font_color;
-}
-#side_nav div > ul > li {
-	margin-left: -@aside_pad;
-	margin-right: -@aside_pad;
-	position: relative;
-}
-#side_nav div > ul > li:first-child > a {
-	padding-top: @aside_header_vert_pad;
-	padding-bottom: @aside_header_vert_pad;
-	background: @dark_bgcolor;
-	color: @font_light_color;
-}
-#side_nav div > ul > li.active,
-#side_nav div > ul > li:not(:first-child):hover,
-#side_nav div > ul > li:hover li {
-	border-top-color: @dark_bgcolor;
-	border-bottom-color: @dark_bgcolor;
-}
-#side_nav div > ul > li.active > a,
-#side_nav div > ul > li:hover > a,
-#side_nav div > ul > li:hover li a {
-	background: @nav_hover_bgcolor;
-}
-#side_nav div > ul > li.active > a,
-#side_nav div > ul > li:hover a {
-	color: @nav_hover_font_color;
-}
-
-/* Arrow */
-#side_nav div > ul > li.dropdown > a:after {
-	content: "\e000";
-	font-family: Flaticon;
-	font-size: 16px;
-	line-height: 21px;
-	font-style: normal;
-	float: right;
-}
-
-/* Submenu */
-#side_nav div > ul > li ul {
-	display: none;
-	margin: 0;
-	position: absolute;
-	left: 100%;
-	top: -@nav_list_border_width;
-	white-space: nowrap;
-}
-#side_nav div > ul > li:hover ul {
-	display: block;
-}
-#side_nav div > ul > li ul li {
-}
-#side_nav div > ul > li ul a {
-	padding-left: 25px;
-	padding-right: 25px;
-	font-style: italic;
-}
-#side_nav div > ul > li ul a:hover {
-	@c:@nav_hover_bgcolor;
-	background: rgb(red(@c), green(@c), blue(@c));
-}
+/* Footer */
+@import "less/footer.less";
 
 #main .links {
 }
